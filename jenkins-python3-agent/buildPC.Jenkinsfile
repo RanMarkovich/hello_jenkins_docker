@@ -6,6 +6,6 @@ node('docker'){
         submoduleCfg: [], userRemoteConfigs:[['https://github.com/RanMarkovich/hello_jenkins_docker.git']]])
     }
     stage('build'){
-		dockerImage = docker.build('ranmarkovich/agent-dnc:v$BUILD_NUMBER', './dotnetcore');
+		dockerImage = docker.build('ranmarkovich/agent-dnc:v$BUILD_NUMBER', './pythoncore');
 	}
 }
