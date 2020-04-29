@@ -8,4 +8,9 @@ node('docker'){
     stage('build'){
 		dockerImage = docker.build('ranmarkovich/agent-dnc:v$BUILD_NUMBER', './pythoncore');
 	}
+	stage('push'){
+		docker.withRegistry('','dockerhubcreds'){
+		    dockerImage.push();
+		}
+	}
 }
