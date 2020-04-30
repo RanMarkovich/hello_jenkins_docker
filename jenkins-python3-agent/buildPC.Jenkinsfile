@@ -9,7 +9,7 @@ node('docker'){
 		dockerImage = docker.build('ranmarkovich/agent-pc:v$BUILD_NUMBER', './pythoncore');
 	}
 	stage('push'){
-		docker.withRegistry('','docker-credential-desktop'){
+		docker.withCredentials([usernamePassword(credentialsId: 'desktop', usernameVariable: 'ranmarkovich', passwordVariable: 'Rm123456!')]){
 		    dockerImage.push();
 		}
 	}
