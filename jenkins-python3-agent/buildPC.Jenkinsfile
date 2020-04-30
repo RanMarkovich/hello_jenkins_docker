@@ -9,7 +9,7 @@ node('docker'){
 		dockerImage = docker.build('ranmarkovich/agent-pc:v$BUILD_NUMBER', './pythoncore');
 	}
 	stage('push'){
-		docker.withRegistry('','dockerhubcreds'){
+		docker.withRegistry('','docker-credential-desktop'){
 		    dockerImage.push();
 		}
 	}
