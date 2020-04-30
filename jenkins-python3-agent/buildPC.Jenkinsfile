@@ -8,7 +8,7 @@ node('docker'){
 		dockerImage = docker.build('ranmarkovich/agent-pc:v$BUILD_NUMBER', './pythoncore');
 	}
 	stage('push'){
-		docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds'){
+		docker.withRegistry('https://index.docker.io', 'dockerhubcreds'){
 			dockerImage.push();
 		}
 	}
