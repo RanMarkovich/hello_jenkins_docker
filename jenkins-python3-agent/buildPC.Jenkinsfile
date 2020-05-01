@@ -9,6 +9,7 @@ node('docker'){
 	}
 	stage('push'){
 	docker.withRegistry('https://index.docker.io/v1/'){
+	        sh 'docker login'
             dockerImage.push();
         }
 	}
